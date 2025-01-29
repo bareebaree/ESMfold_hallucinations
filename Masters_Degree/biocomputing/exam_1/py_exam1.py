@@ -114,7 +114,7 @@ def genus_stats(filename="species1.txt"):
             genus = line.split()[0]
             genera.append(genus)
         number_unique_genus = len(set(genera))
-        avg_species_per_genus = division(number_unique_genus, species)
+        avg_species_per_genus = division(species, number_unique_genus)
     return number_unique_genus, avg_species_per_genus
 
 if __name__ == '__main__':

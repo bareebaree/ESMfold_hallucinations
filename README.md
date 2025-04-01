@@ -7,7 +7,7 @@ Overview: Identify why protein language models hallucinate, by generating a seri
 
 	
 
-1. Choose a protein language model an try to make it hallucinate
+**1. Choose a protein language model and force hallucinations**
 	
  a. Get Pure language model - ESMfold2 running on computer, HPC cluster etc 
 	
@@ -19,7 +19,7 @@ Overview: Identify why protein language models hallucinate, by generating a seri
 	
  e. Generate hallucinations, check against known structures to see if they're hallucinations.
 
-2.	Evaluating hallucinations vs real folds
+**2. Evaluating hallucinations vs real folds**
 
 
 ### Currently incomplete, next steps to be determined based on results of previous step.

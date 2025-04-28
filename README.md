@@ -1,5 +1,5 @@
 # ESMfold_hallucinations
-# This readme is currently in complete, but it provides an overview and general structure for project, as this is an MSc thesis project in early stages.
+# This readme is currently incomplete, but it provides an overview and general structure for project, as this is an MSc thesis project in early stages.
 ### Project Roadmap
 
 Overview: Identify why protein language models hallucinate, by generating a series of folds that are hallucinations, then evaluating them. Model should be scalable to be able to handle largeamounts of generated folds and initial folds.

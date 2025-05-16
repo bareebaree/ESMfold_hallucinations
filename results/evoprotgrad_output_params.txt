@@ -1,0 +1,4 @@
+parallel_chains: 4
+n_steps: 300
+max_mutations: 374
+preserved_regions: None

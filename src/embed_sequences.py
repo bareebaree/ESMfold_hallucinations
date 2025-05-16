@@ -1,10 +1,20 @@
+"""
+This script embeds a strings of amino acids into a numerical embedding sequence, so they can be clustered downstream.
+
+This utilises the ESM tokeniser to do so, a pretrained model.
+
+The output of this script is the embeddings of all protein sequences saved as a numpy NPZ file.
+
+"""
+
+
 from transformers import EsmModel, EsmTokenizer
 import torch
 import numpy as np
 from Bio import SeqIO
 
 # Initialise protein family
-protein_family = "protease"
+protein_family = "kinase"
 
 # Set GPU for more efficient computation
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -45,6 +55,6 @@ for record in SeqIO.parse(fasta_path, "fasta"):
     embeddings.append(emb)
     names.append(record.id)
 
-# Optional: save
+# save
 np.savez_compressed(f"./data/initial_proteins/{protein_family}/{protein_family}_esm2_embeddings.npz",
                     names=names, embeddings=np.vstack(embeddings))

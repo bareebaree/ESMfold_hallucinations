@@ -23,7 +23,7 @@ import shutil
 matplotlib.use("Agg")  
 
 # set protein family
-protein_family = "protease"
+protein_family = "kinase"
 
 # Load data and embeddings
 data = np.load(f"./data/initial_proteins/{protein_family}/{protein_family}_esm2_embeddings.npz", allow_pickle=True)
@@ -140,7 +140,7 @@ closest_df.to_csv(f"./data/initial_proteins/{protein_family}/closest_to_centroid
 print("✅ Saved closest sequences to centroids as 'closest_to_centroid.csv'")
 
 # Copy matching fasta files
-fasta_src_dir = "f./data/initial_proteins/{protein_family}/{protein_family}_fastas"
+fasta_src_dir = f"./data/initial_proteins/{protein_family}/{protein_family}_fastas"
 fasta_dst_dir = os.path.join(fasta_src_dir, "most_distant_sequences")
 os.makedirs(fasta_dst_dir, exist_ok=True)
 

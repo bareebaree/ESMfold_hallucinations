@@ -1,8 +1,18 @@
+"""
+This script runs a multiple sequence alignment using a locally installed MAFFT. The input is a series of defined protein families that are desired
+to be embdedded and clustered according to similiarity. 
+
+"""
+
 import os
 import subprocess
 from Bio import SeqIO
 
+# Define protein families as list
+
 protein_families = ["protease", "kinase", "dehydrogenase"]
+
+# For loop to open protein fasta files, clean them, then run mafft on them all.
 
 for protein in protein_families:
     print(f"\n🔍 Processing: {protein}")

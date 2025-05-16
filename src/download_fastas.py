@@ -1,7 +1,13 @@
+"""
+This script programmatically downloads a series of FASTA files from PDB of a TSV file of selected structure IDs. 
+
+"""
+
 import requests
 import os
 import pandas as pd
 
+# Family of 
 protein_family = "protease"
 
 # Import structures.tsv and extract accession numbers into a list

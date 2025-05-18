@@ -1,0 +1,7 @@
+1. Set EvoProtGrad ESM expert to most powerful model
+2. Move entire project into a portable folder with working relative paths. Upload this to any necessary cluster.
+3. Initialisation step with 200 iterations, and max mutation 8
+4. Subsequent steps are 100 iterations with max mutation 4
+5. Save as a CSV for each run: all sequences proposed, as well as the delta change in score. Count number of different amino acids between sequence proposals. Also extract the best sequence as a separate CSV.
+6. Put entire process in a while loop that will end when 10 subsequent best scores of < 0 are registered. Each loop should utilise the best sequence of the previous run as the input. It's probably helpful to iteratively write this as a fasta in data.
+7. Each saved CSV should have a timestamp and an iteration number. 

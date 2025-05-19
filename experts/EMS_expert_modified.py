@@ -9,8 +9,12 @@ import evo_prot_grad.common.embeddings as embeddings
 
 
 class EsmExpertModified(ProteinLMExpert):
-    """Expert wrapper for HuggingFace ESM models that outputs logits from one-hot inputs.
-    Removes internal scoring (e.g., masked log-likelihood); delegates scoring to VariantScoring.
+    """Expert baseclass for HuggingFace protein language models from the ESM family.
+    Implements abstract methods `_get_last_one_hots` and `tokenize`.
+    Swaps out the `EsmForMaskedLM.esm.embeddings.word_embeddings` layer
+    for a `evo_prot_grad.common.embeddings.OneHotEmbedding` layer.
+    In the future, will have a masking objective added as well, to prevent biases towards certain amino acids
+    
     """
     def __init__(self,
                  temperature: float,
@@ -19,8 +23,8 @@ class EsmExpertModified(ProteinLMExpert):
                  tokenizer: Optional[PreTrainedTokenizerBase] = None,
                  device: str = 'cpu'):
         if model is None and tokenizer is None:
-            model = EsmForMaskedLM.from_pretrained("facebook/esm2_t6_8M_UR50D")
-            tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t6_8M_UR50D")
+            model = EsmForMaskedLM.from_pretrained("facebook/esm2_t33_650M_UR50D")
+            tokenizer = AutoTokenizer.from_pretrained("facebook/esm2_t33_650M_UR50D")
         elif model is None or tokenizer is None:
             raise ValueError("EsmExpert requires both `model` and `tokenizer` to be specified.")
 

@@ -1,4 +1,4 @@
-1. Set EvoProtGrad ESM expert to most powerful model
+1. ***DONE***Set EvoProtGrad ESM expert to most powerful model
 2. Move entire project into a portable folder with working relative paths. Upload this to any necessary cluster.
 3. Initialisation step with 200 iterations, and max mutation 8
 4. Subsequent steps are 100 iterations with max mutation 4

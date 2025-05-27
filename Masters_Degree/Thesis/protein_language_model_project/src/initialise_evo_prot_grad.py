@@ -8,9 +8,9 @@ import glob
 from collections import deque
 
 # === CONFIGURATION ===
-initial_fastas_dir = '/mnt/c/Users/james/Masters_Degree/Thesis/protein_language_model_project/data/initial_proteins/dehydrogenase/dehydrogenase_fastas/most_distant_sequences'
-data_dir = '/mnt/c/Users/james/Masters_Degree/Thesis/protein_language_model_project/data/iterations/'
-results_dir = '/mnt/c/Users/james/Masters_Degree/Thesis/protein_language_model_project/results/'
+initial_fastas_dir = './data/initial_proteins/dehydrogenase/dehydrogenase_fastas/most_distant_sequences'
+data_dir = './data/iterations/'
+results_dir = './results/'
 os.makedirs(data_dir, exist_ok=True)
 os.makedirs(results_dir, exist_ok=True)
 
@@ -45,6 +45,7 @@ for initial_fasta in fasta_files:
     pdb_id = os.path.basename(initial_fasta)[:4]
     print(f"\n🚀 Starting evolution for {pdb_id}...")
 
+    # === INITIAL ITERATION ===
     evo_init = evo_prot_grad.DirectedEvolution(
         wt_fasta=initial_fasta,
         output='all',
@@ -52,9 +53,10 @@ for initial_fasta in fasta_files:
         parallel_chains=4,
         n_steps=100,
         max_mutations=8,
-        verbose=True
+        verbose=True,
+        results_dir=results_dir
     )
-    evo_init.pdb_id = pdb_id  # store it for later use in logging
+    evo_init.pdb_id = pdb_id  # store for logging
     evo_init(iteration_number=0)
 
     init_log_path = get_latest_iteration_log(iteration_number=0)
@@ -65,6 +67,7 @@ for initial_fasta in fasta_files:
     recent_best_scores = deque(maxlen=10)
     wt_fasta = init_fasta
 
+    # === EVOLUTION LOOP ===
     while True:
         print(f"\n🧬 Running evo iteration {iteration} for {pdb_id}...")
 
@@ -75,7 +78,8 @@ for initial_fasta in fasta_files:
             parallel_chains=4,
             n_steps=50,
             max_mutations=4,
-            verbose=True
+            verbose=True,
+            results_dir=results_dir
         )
         evo.pdb_id = pdb_id  # for logging
         evo(iteration_number=iteration)

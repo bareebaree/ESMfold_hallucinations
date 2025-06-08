@@ -12,6 +12,7 @@ The general pipeline for this project will be as follows:
 3. Generate protein sequences using a tool such as EvoProtGrad with parameters designed to produce hallucinated proteins.
 4a. Use sequences from previous pipelines as inputs for structure from sequence models.
 4b. ESM3 can also be an option, as it takes prompts from other sources than sequence.
+4c. Exploratory data analysis on wild-type/final variant pairs to identify features the model optimises for
 5. Use Foldseek to compare generated sequences against known sequences to determine if they are hallucinated.
 6. Development of evaluation metrics to identify hallucinations.
 

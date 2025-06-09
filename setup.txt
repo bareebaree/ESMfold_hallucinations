@@ -1,0 +1,9 @@
+1. Install evo-prot-grad from pip
+
+2. In the directory it is installed to, replace sampler.py and variant_scoring.py with the modified versions in this repo
+
+3. Use the ESM expert in experts, and ensure device is set to 'cuda'. The CPU can be used if you use the smaller ESM models however, the 650M model just takes an extremely long time on CPU.
+
+4. Other models can be used if you want to optimise and force hallucinations in another model.
+
+5. You should have an input directory of fastas you want to run through the process. They should ideally be no more than 60% similar as to not bias towards certain motifs
